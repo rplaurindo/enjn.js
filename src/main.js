@@ -145,7 +145,7 @@ export default enJn = (function () {
         var
           iterator = Iterator.Proxy.new(collection);
 
-        iterator.each(startingIndex, finalIndex, callback);
+        iterator.each(callback, startingIndex, finalIndex);
       }
     },
 

@@ -199,11 +199,11 @@ import { RecursivePromise } from './../../../recursive-promise.js';
         return _iterator.hasNext();
       };
 
-      this.each = function (startingIndex, finalIndex, callback) {
+      this.each = function (callback, startingIndex, finalIndex) {
         return _iterator.each(startingIndex, finalIndex, callback);
       };
 
-      this.reverseEach = function (startingIndex, callback) {
+      this.reverseEach = function (callback, startingIndex) {
         return _iterator.reverseEach(startingIndex, callback);
       };
 

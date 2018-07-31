@@ -11,7 +11,7 @@
 
       filled: {
         value: function () {
-          return !this.empty();
+          return !this.isEmpty();
         }
       },
 

@@ -24,24 +24,26 @@ var
         text = $(node).value();
 
         if (!start || start != "number") {
-          $.reverseEach(text, node.selectionStart,
+          $.reverseEach(
             function (c, i) {
               // debugger
               if (c == " ") {
                 start = i;
                 this.finalize();
               }
-            });
+            },
+            text, node.selectionStart);
         }
 
         if (!end || typeof end != "number") {
-          $.reverseEach(text, node.selectionEnd,
+          $.reverseEach(
             function (c, i) {
               if (c == " ") {
                 end = i;
                 this.finalizeOnReverse();
               }
-            });
+            },
+            text, node.selectionEnd);
         }
 
         if (end < start) {
@@ -112,7 +114,7 @@ var
     },
 
     tagName: function () {
-      if (this.some() && this.asNode() instanceof window.Element) {
+      if (this.hasSome() && this.asNode() instanceof window.Element) {
         return this.property("tagName").toLowerCase();
       }
 
@@ -216,7 +218,7 @@ var
           }
         };
 
-      if (this.some()) {
+      if (this.hasSome()) {
         asIterable = this.asArray();
         iterator = Iterable.Proxy.new(asIterable);
         iterator.each(callback);

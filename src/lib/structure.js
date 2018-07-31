@@ -78,7 +78,7 @@ Structure = (function () {
 
           if (!Object.belongsToClass(contextBody, Object) ||
             // otherwise it will arrive there still
-            Object.empty(contextBody) ||
+            Object.isEmpty(contextBody) ||
             hasAnyAccessor(contextBody)) {
 
             context = composePath(constant, name, path);
@@ -89,7 +89,7 @@ Structure = (function () {
                 propertyDescriptors.get = contextBody.get || function () { };
                 propertyDescriptors.set = contextBody.set || function () { };
               } else {
-                if (Object.empty(contextBody)) {
+                if (Object.isEmpty(contextBody)) {
                   propertyDescriptors.value = {};
                 }
               }

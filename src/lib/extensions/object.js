@@ -79,15 +79,15 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    empty: {
+    isEmpty: {
       value: function (object) {
         return $.amount(object) === 0;
       }
     },
 
-    some: {
+    hasSome: {
       value: function (object) {
-        return !$.empty(object);
+        return !$.isEmpty(object);
       }
     },
 
@@ -350,7 +350,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
           };
 
         iterator = Iterator.Proxy.new(properties);
-        iterator.each(startingIndex || "0", callback);
+        iterator.each(callback, startingIndex || "0");
 
         if (key) {
           return key;

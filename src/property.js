@@ -48,14 +48,14 @@ var
         };
 
       if (typeof text == "string") {
-        if (this.some()) {
+        if (this.hasSome()) {
           this.each(callback);
         }
         return this;
       } else {
         text = "";
         childNodes = this.childNodes();
-        if (childNodes.some()) {
+        if (childNodes.hasSome()) {
           childNodes.each(iteratorBlock);
 
           return text.trim();
@@ -84,7 +84,7 @@ var
         // }
         callback = function (element) {
           parent = element.closest(query);
-          if ($(parent).some()) {
+          if ($(parent).hasSome()) {
             elements.push(parent);
           }
         };
@@ -133,7 +133,7 @@ var
           comparators.each(iteratorBlock);
         };
 
-      if (this.some()) {
+      if (this.hasSome()) {
         node = this.asNode();
 
         if (comparator) {
@@ -162,7 +162,7 @@ var
         sibling = sibling.previousElementSibling;
       }
 
-      if (siblings.some()) {
+      if (siblings.hasSome()) {
         return siblings;
       }
 
@@ -181,7 +181,7 @@ var
         sibling = sibling.nextElementSibling;
       }
 
-      if (siblings.some()) {
+      if (siblings.hasSome()) {
         return siblings;
       }
 

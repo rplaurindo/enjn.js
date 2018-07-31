@@ -31,7 +31,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
             callback = startingIndex;
           }
 
-          iterator.reverseEach(startingIndex, callback);
+          iterator.reverseEach(callback, startingIndex);
         }
       },
 
@@ -44,7 +44,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
         }
       },
 
-      selectInBreadth: {
+      eachInBreadth: {
         value: function (collection, callback) {
           var
             strategy;
@@ -57,7 +57,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
               .new(iterable));
           }
 
-          return strategy.research(callback);
+          strategy.research(callback);
         }
       },
 
@@ -80,7 +80,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
 
       asNode: {
         value: function () {
-          if (this.some()) {
+          if (this.hasSome()) {
             return this.first()[0];
           }
           return null;
@@ -121,15 +121,15 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
         }
       },
 
-      empty: {
+      isEmpty: {
         value: function () {
           return this.length === 0;
         }
       },
 
-      some: {
+      hasSome: {
         value: function () {
-          return !this.empty();
+          return !this.isEmpty();
         }
       },
 
@@ -147,10 +147,10 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
         }
       },
 
-      selectInBreadth: {
+      eachInBreadth: {
         value: function (callback) {
-          return ConstructorReference(ConstructorReference
-            .selectInBreadth(this, callback));
+          ConstructorReference(ConstructorReference
+            .eachInBreadth(this, callback));
         }
       },
 
@@ -184,24 +184,13 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
               }
             };
 
-          this.selectInBreadth(iteratorBlock);
+          this.eachInBreadth(iteratorBlock);
 
           return filtered;
         }
       },
 
-      filterText: {
-        value: function (text) {
-          var
-            callback = function (node) {
-              return ConstructorReference(node).text().trim() == text.trim();
-            };
-
-          return this.selectInBreadth(callback);
-        }
-      },
-
-      // revise
+      // revisar
       sort: {
         value: function (compareFunction) {
           return ConstructorReference(ConstructorReference.Collection.new(this)
@@ -306,7 +295,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
 
             callback = function (node) {
               childNodes = ConstructorReference(node).childNodes();
-              if (childNodes.some()) {
+              if (childNodes.hasSome()) {
                 firstNodes.push(childNodes.asNode());
               }
             };
@@ -325,7 +314,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
 
             callback = function (node) {
               childElements = ConstructorReference(node).childElements();
-              if (childElements.some()) {
+              if (childElements.hasSome()) {
                 firstElements.push(childElements.asNode());
               }
             };
@@ -357,7 +346,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
           if (filter) {
             query = this.parent().find(filter);
 
-            if (query.some()) {
+            if (query.hasSome()) {
               siblings = this.previousSiblings().filter(iteratorBlock);
             }
           } else {
@@ -389,7 +378,7 @@ import { Iterator } from './lib/patterns/gof/iterator.js';
           if (filter) {
             query = this.parent().find(filter);
 
-            if (query.some()) {
+            if (query.hasSome()) {
               siblings = this.nextSiblings().filter(iteratorBlock);
             }
           } else {

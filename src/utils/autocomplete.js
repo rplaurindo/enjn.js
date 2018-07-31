@@ -68,7 +68,7 @@ var
 
               foundElements = resolvedList.elements;
 
-              if (foundElements.some()) {
+              if (foundElements.hasSome()) {
                 cachedElements = resolvedList.elements;
               }
 
@@ -118,7 +118,7 @@ var
                   success: function (r) {
                     element = $(r);
 
-                    if (element.some()) {
+                    if (element.hasSome()) {
                       elements2Recovery.push(element);
                     }
                     resolvedList = resolveList(element,

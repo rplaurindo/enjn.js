@@ -46,7 +46,7 @@ var
               // element = $(element);
               // sibling = element.next();
               // debugger
-              // if (sibling.some()) {
+              // if (sibling.hasSome()) {
               //     $(element).insertBefore(sibling);
               // } else {
               //     element.parent().append(element);
@@ -95,7 +95,7 @@ var
         };
 
       nodes = $(node);
-      if (nodes.empty()) {
+      if (nodes.isEmpty()) {
         nodes = $(window.document.createTextNode(node));
       }
 
@@ -110,7 +110,7 @@ var
 
         callback = function (element) {
           firstNode = $(element).firstNode();
-          if (firstNode.some()) {
+          if (firstNode.hasSome()) {
             node.insertBefore(firstNode);
           } else {
             $(element).append(node);
@@ -118,7 +118,7 @@ var
         };
 
       node = $(node);
-      if (node.empty()) {
+      if (node.isEmpty()) {
         node = $(window.document.createTextNode(node));
       }
 
@@ -213,7 +213,7 @@ var
               }
             };
 
-          if (comparedNode.some()) {
+          if (comparedNode.hasSome()) {
             comparedAsIterable = Array.from(comparedNode);
             comparedAsIterableIterator = Iterable.Proxy
               .new(comparedAsIterable);
@@ -229,7 +229,7 @@ var
         comparedNode = $(comparedNode);
       }
 
-      if (this.some()) {
+      if (this.hasSome()) {
         asIterable = this.asArray();
 
         asIterableIterator = Iterable.Proxy.new(asIterable);
