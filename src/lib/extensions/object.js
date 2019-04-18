@@ -139,7 +139,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
 
     hasAttribute: {
       value: function (object, attributeName) {
-        return $(object, true).includes(attributeName);
+        return $.properties(object, true).includes(attributeName);
       }
     },
 
@@ -461,7 +461,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
           properties = $.getOwnPropertyNames(clone);
         }
 
-        return $.difference(properties, $(object, true));
+        return $.difference(properties, $.properties(object, true));
       }
     }
 
