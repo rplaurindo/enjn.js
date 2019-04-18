@@ -47,8 +47,8 @@ import { Iterator } from '../patterns/gof/iterator.js';
                 return true;
               }
             } else {
-              object1Attributes = $.attributes(object1);
-              object2Attributes = $.attributes(object2);
+              object1Attributes = $.properties(object1);
+              object2Attributes = $.properties(object2);
               object1Methods = $.methods(object1);
               object2Methods = $.methods(object2);
 
@@ -139,7 +139,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
 
     hasAttribute: {
       value: function (object, attributeName) {
-        return $.attributes(object, true).includes(attributeName);
+        return $(object, true).includes(attributeName);
       }
     },
 
@@ -238,8 +238,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
       value: function (object) {
         var
           iterator,
-          attributes = $.attributes(object),
-          clone = {},
+          attributes = $.properties(properties         clone = {},
 
           callback = function (v, k) {
             if (typeof v == "string") {
@@ -254,61 +253,6 @@ import { Iterator } from '../patterns/gof/iterator.js';
         iterator.each(callback);
 
         return clone;
-      }
-    },
-
-    firstFromASlice: {
-      value: function (object, slice, startingIndex, caseSensitive) {
-        var
-          iterator,
-          key,
-          regexp,
-          attributes = $.attributes(object),
-
-          callback = function (k, i) {
-            if (!isNaN(i)) {
-              if (typeof object[k] == "string" &&
-                i >= startingIndex) {
-                if (object[k].search(regexp) != -1) {
-                  key = k;
-                  this.finalize();
-                }
-              }
-            } else if (typeof object[k] == "string") {
-              if (object[k].search(regexp) != -1) {
-                key = k;
-                this.finalize();
-              }
-            }
-          };
-
-        if (typeof startingIndex != "number") {
-            if (typeof startingIndex == "boolean") {
-              caseSensitive = startingIndex;
-            } else if (!caseSensitive || typeof caseSensitive !=
-                        "boolean") {
-              caseSensitive = false;
-            }
-
-          startingIndex = 0;
-        }
-
-        slice = slice.trim();
-
-        if (!caseSensitive) {
-          regexp = new RegExp(slice, "i");
-        } else {
-          regexp = new RegExp(slice);
-        }
-
-        iterator = Iterator.Proxy.new(attributes);
-        iterator.each(callback);
-
-        if (key) {
-          return key;
-        }
-
-        return undefined;
       }
     },
 
@@ -360,7 +304,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    amount: {
+    amountOf: {
       value: function (object, item) {
 
         var
@@ -446,7 +390,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    attributes: {
+    properties: {
       value: function (object, includeNonEnumerable) {
         if (typeof includeNonEnumerable != "boolean") {
           includeNonEnumerable = false;
@@ -517,7 +461,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
           properties = $.getOwnPropertyNames(clone);
         }
 
-        return $.difference(properties, $.attributes(object, true));
+        return $.difference(properties, $(object, true));
       }
     }
 
