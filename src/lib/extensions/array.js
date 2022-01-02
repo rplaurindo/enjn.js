@@ -9,38 +9,6 @@ import './string.js';
   "use strict";
 
   Object.defineProperties($, {
-    // already proposed in ES7
-    flatten: {
-      value: function (linkedList) {
-        var
-          iterator,
-          flattened = [],
-          allowedPattern = /^(Array|Arguments)$/,
-          className = Object.className(linkedList),
-
-          callback = function (item) {
-            // if it is a Array or Arguments it'll still to pass by there
-            if (!allowedPattern.test(Object.className(item))) {
-              flattened.push(item);
-            }
-          };
-
-        if (className == "Arguments") {
-          linkedList = $.from(linkedList);
-        } else if (!allowedPattern.test(className)) {
-          return linkedList;
-        }
-
-        // this way will treate all as String after run .join
-        // linkedList = linkedList.join().split(",");
-        iterator = Search.Context.new(Search.Graphs.BFS.Array
-          .new(linkedList));
-
-        iterator.research(callback);
-
-        return flattened;
-      }
-    },
 
     compact: {
       value: function (collection) {
