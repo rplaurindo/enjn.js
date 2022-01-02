@@ -10,12 +10,6 @@ import './string.js';
 
   Object.defineProperties($.prototype, {
 
-    copy: {
-      value: function (startingIndex, finalIndex) {
-        return this.slice(startingIndex, finalIndex + 1);
-      }
-    },
-
     clone: {
       value: function () {
         var
