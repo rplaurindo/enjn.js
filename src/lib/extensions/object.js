@@ -222,12 +222,6 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    asCountableLiteral: {
-      value: function (collection) {
-        return Iterator.parse(collection);
-      }
-    },
-
     // The keys of associative arrays in JS only can be of integer or string kind. The associations that keys are of Integer kind, the items is sorted according the keys (works as HashSet of the Java); the associations that keys are String kind, works as LinkedHashMap, it implements a associative array and maintains the order of entrance on iterate.
     // TreeMap implements a structure based red-black tree (binary search).
     indexOf: {
