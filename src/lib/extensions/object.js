@@ -306,23 +306,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
         return false;
       }
     },
-
-    reverse: {
-      value: function (object) {
-        var
-          newObject = {},
-
-          callback = function (k) {
-            newObject[k] = object[k];
-          };
-
-        $.keys(object).reverse().forEach(callback);
-
-        return newObject;
-      }
-    },
-
-    // revisar
+    
     belongToSameClass: {
       value: function (objects) {
         var
