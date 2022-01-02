@@ -107,13 +107,6 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    constructorForName: {
-      value: function (name, context) {
-        context = context || window;
-        return context[name];
-      }
-    },
-
     belongsToClass: {
       value: function (objects, classFunction) {
         var
@@ -122,7 +115,7 @@ import { Iterator } from '../patterns/gof/iterator.js';
           amount = 0,
 
           callback = function (object) {
-            if ($.constructorForName($.className(object)) == classFunction) {
+            if (Reflect.constructorForName($.className(object)) == classFunction) {
               amount++;
             }
           };
