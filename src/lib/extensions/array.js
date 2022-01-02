@@ -200,53 +200,6 @@ import './string.js';
       }
     },
 
-    firstFromASlice: {
-      value: function (slice, startingIndex, caseSensitive) {
-        var
-          regexp,
-          iterator,
-          clone = this.clone(),
-          index = -1,
-
-          iteratorBlock = function (v, i) {
-            if (typeof v == "string" && i >= startingIndex) {
-              if (v.search(regexp) != -1) {
-                index = i;
-                this.finalize();
-              }
-            }
-          };
-
-        if (typeof startingIndex != "number") {
-          if (typeof startingIndex == "boolean") {
-            caseSensitive = startingIndex;
-          }
-          startingIndex = 0;
-        }
-
-        if (typeof caseSensitive != "boolean") {
-          caseSensitive = false;
-        }
-
-        if (startingIndex === 0) {
-          clone = clone.asc();
-        }
-
-        slice = slice.trim();
-
-        if (!caseSensitive) {
-          regexp = new RegExp(slice, "i");
-        } else {
-          regexp = new RegExp(slice);
-        }
-
-        iterator = Iterator.Proxy.new(this);
-        iterator.each(iteratorBlock);
-
-        return index;
-      }
-    },
-
     countSlice: {
       value: function (slice, startingIndex, caseSensitive) {
         var
