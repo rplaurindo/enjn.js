@@ -8,29 +8,6 @@ import './string.js';
 (function ($) {
   "use strict";
 
-  Object.defineProperties($, {
-
-    compact: {
-      value: function (collection) {
-        var
-
-          callback = function (item) {
-            if (typeof item == "string") {
-              if (item !== "") {
-                return true;
-              }
-            } else {
-              if (item !== undefined && item !== null) {
-                return true;
-              }
-            }
-          };
-
-        return collection.filter(callback);
-      }
-    }
-  });
-
   Object.defineProperties($.prototype, {
 
     copy: {
@@ -325,12 +302,6 @@ import './string.js';
       }
     },
 
-    flatten: {
-      value: function () {
-        return $.flatten(this);
-      }
-    },
-
     normalizeToLowerCase: {
       value: function () {
         var
@@ -376,12 +347,6 @@ import './string.js';
         }
 
         return clone;
-      }
-    },
-
-    compact: {
-      value: function () {
-        return $.compact(this);
       }
     },
 
