@@ -7,7 +7,8 @@ import './object.js';
   Object.defineProperties ($, {
     constructorForName: {
       value: function (name, context) {
-        return Object.constructorForName.call(this, name, context);
+        context = context || window;
+        return context[name];
       }
     },
   });
