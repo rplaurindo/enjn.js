@@ -313,23 +313,6 @@ import './string.js';
       }
     },
 
-    capitalize: {
-      value: function () {
-        var
-          clone = [],
-
-          callback = function (value) {
-            if (typeof value == "string") {
-              clone.push(value.capitalize());
-            }
-          };
-
-        this.forEach(callback);
-
-        return clone;
-      }
-    },
-
     spaceOut: {
       value: function () {
         var
