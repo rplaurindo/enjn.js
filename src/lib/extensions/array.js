@@ -127,12 +127,6 @@ import './string.js';
       }
     },
 
-    difference: {
-      value: function (sets) {
-        return Object.difference.apply(null, [this, Array.from(arguments)]);
-      }
-    },
-
     insertAt: {
       value: function (values, index) {
         var
