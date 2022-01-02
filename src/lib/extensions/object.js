@@ -168,33 +168,6 @@ import { Iterator } from '../patterns/gof/iterator.js';
       }
     },
 
-    difference: {
-      value: function (set, sets) {
-        var
-          differences = $.values(set),
-
-          iteratorBlock = function (set) {
-            var
-              callback = function (item) {
-                return !set.includes(item);
-              };
-
-            differences = differences.filter(callback);
-          };
-
-        sets = Array.from(arguments);
-        sets = sets.splice(1, sets.length - 1);
-
-        if (sets.length < 1) {
-          return set;
-        }
-
-        $.uniq(sets).forEach(iteratorBlock);
-
-        return differences;
-      }
-    },
-
     uniq: {
       value: function (object) {
         var
