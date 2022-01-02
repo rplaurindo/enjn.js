@@ -94,7 +94,7 @@ import './string.js';
           },
 
           callback = function (item) {
-            return larger.includes(item);
+            return larger.includeItems(item);
           };
 
         smaller = (all = all.sort(classifier)).first();
@@ -165,25 +165,24 @@ import './string.js';
       }
     },
 
-    // already proposed in ES7
-    // includes: {
-    //     value: function (items) {
-    //         var
-    //             argumentsAsArray = Array.from(arguments).uniq(),
-    //             mainReference = this,
-    //             count = 0,
+    includeItems: {
+      value: function (items) {
+        var
+          argumentsAsArray = Array.from(arguments).uniq(),
+          mainReference = this,
+          count = 0,
 
-    //             callback = function (arg) {
-    //                 if (mainReference.indexOfEquivalence(arg) > -1) {
-    //                     count += 1;
-    //                 }
-    //             };
+          callback = function (arg) {
+            if (mainReference.indexOfEquivalence(arg) > -1) {
+              count += 1;
+            }
+          };
 
-    //         argumentsAsArray.forEach(callback);
+        argumentsAsArray.forEach(callback);
 
-    //         return count == argumentsAsArray.length;
-    //     }
-    // },
+        return count == argumentsAsArray.length;
+      }
+    },
 
     deleteAt: {
       value: function (startingIndex, finalIndex) {
@@ -243,7 +242,7 @@ import './string.js';
           self = this,
 
           callback = function (item) {
-            return !parts.includes(item);
+            return !parts.includeItems(item);
           };
 
         return self.filter(callback);
