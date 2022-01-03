@@ -6,14 +6,6 @@
   "use strict";
 
   Object.defineProperties($.prototype, {
-    // functionalSingleton: {
-    //     value: function () {
-    //         // delegator = Delegator.apply(this);
-    //         // delegator.object(Singleton.new);
-    //         return Flyweight.Factory.new.apply(this, Array
-    //                                             .from(arguments));
-    //     }
-    // },
 
     buildConstructor: {
       value: function (args) {
@@ -30,26 +22,8 @@
       }
     },
 
-    implementsMethod: {
-      value: function (name) {
-        return Object.implementsMethod(this, name);
-      }
-    },
-
-    // extends: {
-    //   value: function (classReference) {
-
-    //     var
-    //       self = this;
-
-    //     // isExtensible implies !isSealed and !isFrozen
-    //     if (Object.isExtensible(classReference)) {
-    //       self.prototype = new classReference;
-    //     }
-    //   }
-    // },
-
     mixInFrom: {
+      
       value: function (classReferences) {
 
         var
