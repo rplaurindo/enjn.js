@@ -166,22 +166,8 @@ export default enJn = (function () {
 
         return ConstructorReference(collection);
       }
-    },
-
-    extend: {
-      value: function (final, structure) {
-        Structure.new(structure).assignTo(this, final);
-      }
     }
 
-  });
-
-  Object.defineProperties(ConstructorReference.prototype, {
-    extend: {
-      value: function (final, structure) {
-        Structure.new(structure).assignTo(this, final);
-      }
-    }
   });
 
   return ConstructorReference;
