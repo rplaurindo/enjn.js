@@ -7,21 +7,6 @@
 
   Object.defineProperties($.prototype, {
 
-    buildConstructor: {
-      value: function (args) {
-        // this won't be more necessary with Ecam Script 6
-        if (!(args instanceof Array)) {
-          args = Array.from(args);
-        }
-
-        // "bind" is a instance method of Function. It creates a new
-        // function for be called after.
-        // Apply calls the bind method
-        return $.prototype.bind.apply(this, [null].concat(args)
-                                          .flatten());
-      }
-    },
-
     mixInFrom: {
       value: function (classReferences) {
 
